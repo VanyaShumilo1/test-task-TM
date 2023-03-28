@@ -1,0 +1,17 @@
+@import 'colors.scss';
+
+.UserItem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid $onSurface;
+  padding-bottom: 5px;
+  transition: 0.3s all;
+
+  &:hover {
+    border-bottom: 2px solid $primary;
+  }
+
+  div {
+    flex: 1;
+  }
+}

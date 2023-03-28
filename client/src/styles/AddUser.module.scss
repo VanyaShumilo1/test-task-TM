@@ -1,0 +1,14 @@
+@import './colors.scss';
+
+.adduser {
+  margin-top: 50px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: $surface;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}

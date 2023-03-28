@@ -1,0 +1,26 @@
+@import './colors.scss';
+
+
+.table {
+
+  margin-top: 50px;
+  color: $onSurface;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      flex: 1;
+
+    }
+  }
+
+  &__items {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
