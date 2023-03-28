@@ -42,9 +42,33 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const {userid} = req.headers;
+        const events = await EventModel.find()
 
-        const events = await EventModel.find({user: userId})
+        if(!events) {
+            return res.status(404).json({
+                message: "events not found"
+            })
+        }
+
+        res.status(200).json({
+            message: "Events got successfully",
+            events
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            message: "Something went wrong while getting all events",
+            err
+        })
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    try {
+
+        const userid = req.params.id
+
+        const events = await EventModel.find({user: userid})
 
         if(!events) {
             return res.status(404).json({
@@ -60,7 +84,7 @@ router.get('/', async (req, res) => {
     } catch (err) {
         console.log(err)
         res.status(500).json({
-            message: "Something went wrong while getting post",
+            message: "Something went wrong while getting events",
             err
         })
     }
