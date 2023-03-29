@@ -4,6 +4,8 @@ import axios from "../axios.js";
 import {useFetching} from "../hooks/useFetching.js";
 import UserItem from "../Components/UserItem.jsx";
 import styles from '../styles/Home.module.scss'
+import UsersTableHeader from "../Components/UsersTableHeader.jsx";
+import Table from "../Components/Table.jsx";
 
 const Home = () => {
 
@@ -27,15 +29,8 @@ const Home = () => {
 
     return (
         <div>
-            <div className={styles.table}>
-                <div className={styles.table__header}>
-                    <div>Name</div>
-                    <div>Email</div>
-                    <div>Phone number</div>
-                    <div>Events count</div>
-                    <div>Upcoming event</div>
-                </div>
-
+            <Table>
+                <UsersTableHeader/>
                 <div className={styles.table__items}>
                     {
                         isUsersLoading
@@ -46,7 +41,7 @@ const Home = () => {
                             )
                     }
                 </div>
-            </div>
+            </Table>
         </div>
 
     );

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import Container from "../Components/Container.jsx";
-import styles from '../styles/AddUser.module.scss'
 import Input from "../Components/UI/Input.jsx";
 import Button from "../Components/UI/Button.jsx";
 import axios from '../axios.js'
 import {Navigate, useNavigate} from "react-router-dom";
 import Title from "../Components/UI/Title.jsx";
+import styles from '../styles/SubmitForm.module.scss'
 
 const AddUser = () => {
 
@@ -39,7 +39,7 @@ const AddUser = () => {
     }
 
     return (
-        <div className={styles.adduser}>
+        <div className={styles.submitForm}>
             <Container>
                 <Title>Add user</Title>
                 <form onSubmit={handleSubmit}>

@@ -1,0 +1,24 @@
+@import './colors.scss';
+
+.linkBtn {
+  display: inline-block;
+  border: 2px solid $primary;
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.25px;
+  transition: 0.3s all;
+
+  a {
+    transition: 0.3s all;
+  }
+
+  &:hover {
+    background: $primary;
+
+    a {
+      color: $onPrimary;
+    }
+  }
+}

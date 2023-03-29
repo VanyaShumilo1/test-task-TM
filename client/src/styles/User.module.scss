@@ -1,0 +1,23 @@
+@import './colors.scss';
+
+.user {
+  margin-top: 50px;
+}
+
+.table {
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+}
+
+.eventsBlock {
+  margin-top: 40px;
+}
+
+.addEventBtn {
+  margin-top: 30px;
+}

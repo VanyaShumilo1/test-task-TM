@@ -12,7 +12,7 @@ const Header = () => {
                         <Link to={'/'}>Home</Link>
                     </div>
                     <div className={styles.addUserBtn}>
-                        <Link  to={'/adduser'}>Add user</Link>
+                        <Link to={'/adduser'}>Add user</Link>
                     </div>
                 </div>
 

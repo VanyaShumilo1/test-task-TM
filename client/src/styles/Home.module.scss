@@ -9,6 +9,7 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px;
 
     div {
       flex: 1;
@@ -17,7 +18,6 @@
   }
 
   &__items {
-    margin-top: 15px;
     display: flex;
     flex-direction: column;
     gap: 15px;
