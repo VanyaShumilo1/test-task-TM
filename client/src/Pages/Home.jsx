@@ -8,29 +8,32 @@ import styles from '../styles/Home.module.scss'
 const Home = () => {
 
     const [users, setUsers] = useState([])
+    const [events, setEvents] = useState([])
 
     const [fetchUsers, isUsersLoading, usersError] = useFetching(async () => {
         const response = await axios.get('/user')
         setUsers(response.data.users)
     })
 
+    const [fetchEvents, isEventsLoading, eventsError] = useFetching(async () => {
+        const response = await axios.get('/event')
+        setEvents(response.data.events)
+    })
 
     useEffect(() => {
-        //const users = axios.get('/user').then(users => setUsers(users.data.users))
         fetchUsers()
+        fetchEvents()
     }, [])
-
-    console.log(users)
 
     return (
         <div>
-
-
             <div className={styles.table}>
                 <div className={styles.table__header}>
                     <div>Name</div>
                     <div>Email</div>
                     <div>Phone number</div>
+                    <div>Events count</div>
+                    <div>Upcoming event</div>
                 </div>
 
                 <div className={styles.table__items}>
@@ -38,12 +41,11 @@ const Home = () => {
                         isUsersLoading
                             ? "Loading"
                             : users.map(user => (
-                                    <UserItem user={user}/>
+                                    <UserItem events={events} key={user._id} user={user}/>
                                 )
                             )
                     }
                 </div>
-
             </div>
         </div>
 

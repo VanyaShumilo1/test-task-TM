@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const events = await EventModel.find()
+        const events = await EventModel.find().sort({startDate: 1})
 
         if(!events) {
             return res.status(404).json({
