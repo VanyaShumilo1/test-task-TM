@@ -12,7 +12,7 @@ const UserItem = ({user, events, ...props}) => {
     return (
         <div className={styles.UserItem}>
             <div>
-                <Link to={`/${user._id}`}>{firstName} {lastName}</Link>
+                <Link className={styles.link} to={`/${user._id}`}>{firstName} {lastName}</Link>
             </div>
             <div>{email}</div>
             <div>{phoneNumber}</div>

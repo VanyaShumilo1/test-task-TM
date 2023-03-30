@@ -25,10 +25,10 @@ const AddUser = () => {
                 phoneNumber,
             })
             console.log(user)
+
         } catch (err) {
             alert('User already exist')
         }
-
     }
 
     const handleSubmit = async (e) => {
