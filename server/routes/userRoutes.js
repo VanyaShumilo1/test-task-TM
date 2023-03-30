@@ -39,11 +39,18 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const users = await UserModel.find()
+
+        console.log(req.query)
+        const offset = Number(req.query.offset)
+        const limit = Number(req.query.limit)
+
+        const totalUsers = await UserModel.find()
+        const users = await UserModel.find().skip(offset*limit).limit(limit)
 
         res.status(200).json({
             message: "Users got successfully",
-            users
+            users,
+            totalUsers: totalUsers.length
         })
 
     } catch (err) {
