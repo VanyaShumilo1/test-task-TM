@@ -26,6 +26,7 @@ const start = async () => {
     } catch (err) {
         console.log(err)
     }
+
 }
 
 await start()
