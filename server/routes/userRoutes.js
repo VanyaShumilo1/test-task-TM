@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
         })
     }
 })
-
+// get
 router.get('/', async (req, res) => {
     try {
 
