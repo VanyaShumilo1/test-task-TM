@@ -3,7 +3,7 @@ import Container from "../Components/Container.jsx";
 import Input from "../Components/UI/Input.jsx";
 import Button from "../Components/UI/Button.jsx";
 import axios from '../axios.js'
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Title from "../Components/UI/Title.jsx";
 import styles from '../styles/SubmitForm.module.scss'
 
@@ -16,15 +16,24 @@ const AddUser = () => {
     const [email, setEmail] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
 
+    const phoneReg = /^\+?3?8?(0[5-9][0-9]\d{7})$/
+    const emailReg = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
     const saveUser = async () => {
         try {
-            const user = await axios.post('/user', {
-                firstName,
-                lastName,
-                email,
-                phoneNumber,
-            })
-            console.log(user)
+
+            if (emailReg.test(email) && phoneReg.test(phoneNumber) && firstName !== '' && lastName !== '') {
+                const user = await axios.post('/user', {
+                    firstName,
+                    lastName,
+                    email,
+                    phoneNumber,
+                })
+
+                return user
+            }
+
+
 
         } catch (err) {
             alert('User already exist')
@@ -33,9 +42,13 @@ const AddUser = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await saveUser()
-        alert("user created")
-        navigate('/')
+        const user = await saveUser()
+        if (user) {
+            alert("user created")
+            navigate('/')
+        } else {
+            alert("invalid data")
+        }
     }
 
     return (

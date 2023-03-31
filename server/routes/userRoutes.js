@@ -40,7 +40,6 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
 
-        console.log(req.query)
         const offset = Number(req.query.offset)
         const limit = Number(req.query.limit)
 

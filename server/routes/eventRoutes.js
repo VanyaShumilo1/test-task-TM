@@ -42,7 +42,13 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const events = await EventModel.find().sort({startDate: 1})
+
+        let events = await EventModel.find().sort({startDate: 1})
+        events = events.filter(event => {
+            let eventDate = new Date(event.startDate)
+            let currentDate = new Date()
+            return eventDate > currentDate
+        })
 
         if(!events) {
             return res.status(404).json({
